@@ -1,4 +1,4 @@
-package com.demo.infraestructura.inbound.grpc;
+package com.demo.infraestructure.inbound.grpc;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
