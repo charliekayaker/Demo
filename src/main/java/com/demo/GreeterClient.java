@@ -5,7 +5,9 @@ import io.grpc.ManagedChannelBuilder;
 import com.demo.grpc.HelloRequest;
 import com.demo.grpc.HelloReply;
 import com.demo.grpc.GreeterGrpc;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class GreeterClient {
 
     private final ManagedChannel channel;
@@ -21,7 +23,7 @@ public class GreeterClient {
     public void greet(String name) {
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
         HelloReply response = blockingStub.sayHello(request);
-        System.out.println("Response from server: " + response.getMessage());
+        log.info("Response from server: " + response.getMessage() + " " + response.getName());
     }
 
     public void shutdown() throws InterruptedException {
