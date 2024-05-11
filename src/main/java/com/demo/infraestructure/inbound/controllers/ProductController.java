@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/prices")
 public class ProductController {
 
-    @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
         System.out.println("ProductController created");
@@ -24,7 +24,8 @@ public class ProductController {
     @GetMapping("/products")
     public String getProducts() {
         Product product = new Product();
-        product.setId(new ObjectId("123"));
+        //product.setId(new ObjectId("507f1f77bcf86cd799439011"));
+        product.setName("Un producto");
         productRepository.save(product);
         return "products";
     }

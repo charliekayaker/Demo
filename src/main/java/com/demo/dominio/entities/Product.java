@@ -1,12 +1,12 @@
 package com.demo.dominio.entities;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
 @Data
+@Document(collection = "PRODUCT")
 public class Product {
 
     @Id
