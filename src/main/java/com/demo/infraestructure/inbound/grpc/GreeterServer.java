@@ -1,10 +1,11 @@
 package com.demo.infraestructure.inbound.grpc;
 
+import com.demo.infraestructure.inbound.grpc.proto.GreeterGrpc;
+import com.demo.infraestructure.inbound.grpc.proto.HelloReply;
+import com.demo.infraestructure.inbound.grpc.proto.HelloRequest;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import com.demo.grpc.HelloReply;
-import com.demo.grpc.HelloRequest;
 
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class GreeterServer {
         }
     }
 
-    private static class GreeterImpl extends com.demo.grpc.GreeterGrpc.GreeterImplBase {
+    private static class GreeterImpl extends GreeterGrpc.GreeterImplBase {
         @Override
         public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
             HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).setName("charlie").build();

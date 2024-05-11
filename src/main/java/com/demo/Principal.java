@@ -1,12 +1,20 @@
 package com.demo;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static java.lang.System.out;
 
 public class Principal {
 
     public static void main(String... args) {
+
+        ConcurrentHashMap<String, String> mMap = new ConcurrentHashMap<>();
+        mMap.put("1", "1");
+        mMap.putAll(Map.of("1", "1", "2", "2", "3", "3"));
+
+
 
         Lugar lugares1 = new Lugar();
         lugares1.setName("MILUGAR1");
@@ -40,16 +48,16 @@ public class Principal {
 
         List<Persona> personasList = List.of(persona1, persona2, persona3);
 
+        out.println("1ERA SECCION");
         personasList.stream()
                 .map(Persona::getLugares)
                 .forEach(out::println);
 
+        out.println("2DA SECCION");
         personasList.stream()
                 .map(Persona::getLugares)
                 .flatMap(List::stream)
                 .map(Lugar::getName)
                 .forEach(out::println);
-
-        out.println("Hello World");
     }
 }

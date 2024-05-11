@@ -1,7 +1,7 @@
 package com.demo;
 
 import java.util.Stack;
-
+/*
 public class PrincipalDos {
 
     public static void main(String ...args){
@@ -35,3 +35,4 @@ public class PrincipalDos {
         return stack.isEmpty();
     }
 }
+*/

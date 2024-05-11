@@ -1,14 +1,12 @@
 package com.demo;
 
 import com.demo.infraestructure.adapter.ProductRepositoryTest;
-import com.demo.infraestructure.config.Demo;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
-@SpringBootTest(classes = Demo.class)
+@SpringBootTest(classes = DemoApplication.class)
 class ServiceIntegrationTests {
 
     private ProductRepositoryTest productRepositoryTest;

@@ -1,7 +1,14 @@
+server:
+  port: 5000
 spring:
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
-  flyway:
-    locations: classpath:db/migration
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: PRODUCTSDB
+ # flyway:
+ #   locations: classpath:db/migration
