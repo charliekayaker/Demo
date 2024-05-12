@@ -13,7 +13,6 @@ import java.util.Stack;
 public class BalanceCheckerServiceImpl implements BalanceCheckerService {
 
     public boolean isBalanced(String s) {
-        log.info("Input : " + s);
         if (s == null || s.isEmpty()) {
             return false;
         }
@@ -31,7 +30,6 @@ public class BalanceCheckerServiceImpl implements BalanceCheckerService {
                 }
             }
         }
-
         return stack.isEmpty();
     }
 }

@@ -12,7 +12,6 @@ public class ComplexBalanceCheckerServiceImpl implements BalanceCheckerService {
 
     @Override
     public boolean isBalanced(String s) {
-        log.info("Input : " + s);
         if (s == null || s.isEmpty()) {
             return false;
         }
@@ -20,8 +19,6 @@ public class ComplexBalanceCheckerServiceImpl implements BalanceCheckerService {
         Stack<Character> stack = new Stack<>();
 
         for (char c : s.toCharArray()) {
-            log.info("analizando : " + s);
-            log.info(" c: " + c);
             if (c == '(' || c == '{' || c == '[') {
                 stack.push(c);
             } else {
@@ -29,7 +26,6 @@ public class ComplexBalanceCheckerServiceImpl implements BalanceCheckerService {
                     return false;
                 }
                 char r = stack.pop();
-                log.info("r : " + r);
                 if (c == ')') {
                     if (r != '(') {
                         return false;
@@ -39,15 +35,13 @@ public class ComplexBalanceCheckerServiceImpl implements BalanceCheckerService {
                     if (r != '[') {
                         return false;
                     }
-                } else if (c == '}') {
-                    if (r != '{') {
+                } else if (c == '}' && (r != '{')) {
                         return false;
-                    }
+
 
                 }
             }
         }
-        log.info("final");
         return stack.isEmpty();
     }
 }

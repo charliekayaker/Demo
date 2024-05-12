@@ -2,6 +2,7 @@ package com.demo.infraestructure.inbound.controllers;
 
 import com.demo.aplicacion.usecases.BalanceCheckerUseCase;
 import com.demo.aplicacion.usecases.ComplexBalancerUseCase;
+import com.demo.infraestructure.dto.BalanceCheckerRequest;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,8 +35,8 @@ public class ValidationController {
     }
 
     @PostMapping("/complexBalance")
-    public Mono<ResponseEntity<Boolean>> complexBalanceVerification(@RequestBody Map<String, String> inputMap) {
-        return Mono.fromSupplier(() -> complexBalancerUseCase.checkBalance(inputMap.get("input")))
+    public Mono<ResponseEntity<Boolean>> complexBalanceVerification(@RequestBody BalanceCheckerRequest request) {
+        return Mono.fromSupplier(() -> complexBalancerUseCase.checkBalance(request.getInput()))
                 .map(result -> ResponseEntity.ok().body(result))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
