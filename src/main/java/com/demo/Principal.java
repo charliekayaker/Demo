@@ -1,8 +1,13 @@
 package com.demo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.System.out;
 
@@ -13,8 +18,6 @@ public class Principal {
         ConcurrentHashMap<String, String> mMap = new ConcurrentHashMap<>();
         mMap.put("1", "1");
         mMap.putAll(Map.of("1", "1", "2", "2", "3", "3"));
-
-
 
         Lugar lugares1 = new Lugar();
         lugares1.setName("MILUGAR1");
@@ -51,6 +54,7 @@ public class Principal {
         out.println("1ERA SECCION");
         personasList.stream()
                 .map(Persona::getLugares)
+                .flatMap(List::stream)
                 .forEach(out::println);
 
         out.println("2DA SECCION");
@@ -59,5 +63,43 @@ public class Principal {
                 .flatMap(List::stream)
                 .map(Lugar::getName)
                 .forEach(out::println);
+
+
+        int[] arr1 = {1,2,3,4};
+        int[] arr2 = {5,6,7,8};
+
+        int[] resultArray = Stream.of(arr1, arr2)
+                .flatMapToInt(Arrays::stream)
+                .toArray();
+
+        out.println("3RA SECCION");
+        System.out.println(Arrays.toString(resultArray));
+
+        List<Lugar> list = personasList.stream()
+                .map(Persona::getLugares)
+                .flatMap(Collection::stream)
+                .toList();
+
+        list.forEach(out::println);
+
+
+        List<String> a = List.of("a", "b", "c");
+        List<String> b = List.of("d", "e", "f");
+
+        long initTime = System.currentTimeMillis();
+        List<String> c =  new ArrayList<>();
+        c.addAll(a);
+        c.addAll(b);
+        c.forEach(out::println);
+        out.println("Tiempo de ejecucion: " + (System.currentTimeMillis() - initTime));
+
+        initTime = System.currentTimeMillis();
+        c = Stream.of(a, b)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+
+        c.forEach(out::println);
+        out.println("Tiempo de ejecucion: " + (System.currentTimeMillis() - initTime));
+
     }
 }

@@ -17,7 +17,7 @@ public class BalanceCheckerServiceImpl implements BalanceCheckerService {
         Stack<Character> stack = new Stack<>();
 
         for(char c : s.toCharArray()){
-            if(c== '('){
+            if(c == '('){
                 stack.push(c);
             } else if (c == ')') {
                 if(stack.isEmpty()){
