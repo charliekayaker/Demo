@@ -2,7 +2,6 @@ package com.demo.infraestructure.inbound.controllers;
 
 import com.demo.dominio.entities.Product;
 import com.demo.infraestructure.adapter.ProductRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,6 @@ public class ProductController {
         this.productRepository = productRepository;
         System.out.println("ProductController created");
     }
-
 
     @GetMapping("/products")
     public String getProducts() {

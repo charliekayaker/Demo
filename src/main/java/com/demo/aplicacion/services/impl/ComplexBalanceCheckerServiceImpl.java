@@ -37,8 +37,6 @@ public class ComplexBalanceCheckerServiceImpl implements BalanceCheckerService {
                     }
                 } else if (c == '}' && (r != '{')) {
                         return false;
-
-
                 }
             }
         }
